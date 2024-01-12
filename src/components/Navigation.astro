@@ -1,0 +1,37 @@
+<div class="flex flex-col   md:items-start items-end  text-white w-full">
+	<div class="w-full flex justify-between items-center bg-sky-600 p-4">
+		<div class="flex flex-row gap-4  items-center bg-red">
+			<img transition:name="image" transition:animate="initial" alt="menu logo" class="bg-white w-10 rounded-xl border-2 border-b-slate-500" src="/Exploring-cuate.svg"/>
+			<h3 class="text-xl">Jeshol.se</h3>
+		</div>
+		<svg  class="md:hidden block toggleMenu" id="toggleMenu" xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24"><path class="text-black" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 17h18M3 12h18M3 7h18"/></svg>
+	</div>
+
+	{Astro.url.pathname != "/" && (<nav class="md:p-2 md:flex flex-col gap-4 justify-end text-black p-4 hidden">
+		<h3 class="text-xl w-fit md:block hidden pl-2">Menu</h3>
+		<ul id="menu" class="md:flex flex-col gap-2 justify-end w-fit flex pl-2">
+			<li class="w-fit"><a href="/" class={" text-md " + (Astro.url.pathname === "/" ? "border-b-2 border-b-slate-500 " : " hover:text-slate-400")}>Home</a></li>
+			<li class="w-fit"><a href="/posts/1" class={" text-md " + (Astro.url.pathname.split("/")[1] === "posts" ? "border-b-2 border-b-slate-500 " : "")} >Projects</a></li>
+		</ul>
+	</nav>)}
+
+	{Astro.url.pathname === "/" && (<nav class=" md:p-2 flex flex-col gap-2 justify-end text-black p-4 hidden">
+		<h3 class="text-xl w-fit md:block hidden">Menu</h3>
+		<ul id="menu" class="md:flex flex-col gap-2 justify-end w-fit flex pl-2">
+			<li class="w-fit"><a href="/" class={" text-md " + (Astro.url.pathname === "/" ? "border-b-2 border-b-slate-500" : "hover:text-slate-400")}>Home</a></li>
+			<li class="w-fit"><a href="/posts/1" class={" text-md " + (Astro.url.pathname.split("/")[1] === "posts" ? "border-b-2 border-b-slate-500" : "")} >Projects</a></li>
+		</ul>
+	</nav>)}
+</div>
+
+<script is:inline>
+	document.addEventListener("astro:page-load", () => {
+    const toggleBtn = document.querySelectorAll("svg.toggleMenu")
+	const menu = document.querySelector("nav")
+	toggleBtn.forEach((btn)=>{
+		btn.addEventListener("click", ()=>{
+				menu.classList.toggle("hidden")
+			})
+		})
+    });
+</script>

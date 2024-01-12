@@ -1,0 +1,14 @@
+---
+import {getCollection} from "astro:content";
+const path = await new URL(Astro.request.url).pathname;
+const posts = await getCollection("projects")
+---
+
+<aside  class="md:flex hidden flex-col pr-4 h-max gap-1 pl-2">
+	<h3 class="md:px-2 text-xl">Latest projects</h3>
+	{posts.map((post)=>(
+		<div transition:animate="initial"  class={"py-1 md:px-2 px-0 h-fit  min-w-56 " + (path === `/posts/${post.slug}` ? " text-slate-400" : "") }>
+			 {path === `/posts/${post.slug}` ?  <a  class="text-md">{post.data.title}</a>:  <a href={`/posts/${post.slug}`} class="text-md hover:text-slate-400">{post.data.title}</a>}
+         </div>
+	))}
+</aside>

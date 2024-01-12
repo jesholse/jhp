@@ -1,0 +1,59 @@
+---
+import BasicLayout from "../layout/BasicLayout.astro"
+import Navigation from "../components/Navigation.astro";
+import { getEntry, getCollection } from "astro:content";
+const res = await getEntry("pages", "index")
+const projects = await getCollection("projects")
+projects.length = 3;
+const posts = await getCollection("posts")
+posts.length = 5;
+const {Content} = await res.render()
+console.log(Astro.url)
+---
+
+
+<BasicLayout>
+		<div class="flex flex-col">
+			<Navigation/>
+			<div transition:animate="fade"  class="flex lg:flex-row flex-col gap-2 shadow-md bg-white p-4">
+				<img  transition:animate="initial"  transition:name="hero-image" class="max-w-2xl rounded-xl mx-auto" src="/Exploring-cuate.svg" alt="mountain"/>
+				<div class=" p-4 md:px-10 flex flex-col gap-4 my-auto">
+					<h3 class="text-3xl">My way</h3>
+					<div>
+						<Content/>
+					</div>
+					<div>
+						<a href="/posts/1" class="bg-sky-500 text-white rounded-md p-2 hover:bg-sky-300">My projects</a>
+					</div>
+				</div>	
+			</div>
+			<div  transition:animate="fade"  class="bg-white p-4 text-center text-3xl">
+				<h2>Portfolio</h2>
+			</div>
+			<div transition:animate="slide" class="flex md:flex-row flex-col pb-4 bg-white">
+				{projects.map((post,i )=>(
+					<div class="p-4 basis-1/3 bg-white">
+						<article  class=" flex flex-col w-full p-4 border-2 bg-white">
+						<div class="flex min-h-52 max-w-52 mx-auto">
+							<img src={post.data.image} alt="mountain" class=""/>
+						</div>
+						<header transition:animate="initial" transition:name={post.data.title} class="py-2">
+							<h3  class="text-xl"> 
+								{post.data.title}
+							</h3>
+						</header>
+						<main>
+							<span class="bg-red line-clamp-3">
+								{post.data.excerpt}
+							</span>
+						</main>
+						<footer class="pt-4 text-right">
+							<a class="bg-sky-200 p-2 rounded-md hover:bg-sky-100" href={`/posts/${post.slug}`}>Read more</a>
+						</footer>
+				</article>	
+				</div>
+				))}
+			</div>
+    	</div>
+</BasicLayout>
+

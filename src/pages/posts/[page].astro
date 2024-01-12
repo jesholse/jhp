@@ -1,0 +1,52 @@
+
+---
+import Aside from "../../components/Aside.astro"
+import BasicLayout from "../../layout/BasicLayout.astro"
+import Navigation from "../../components/Navigation.astro"
+import RecentPosts from "../../components/RecentPosts.jsx"
+import type {GetStaticPaths} from "astro";
+import {getCollection, getEntry} from "astro:content";
+export const getStaticPaths = (async({paginate})=>{
+const posts = await getCollection("projects")
+return paginate(posts, {pageSize: 5})
+}) satisfies GetStaticPaths;
+const {page} = Astro.props;
+
+---
+
+<BasicLayout>
+
+    <div class="flex flex-col md:flex-row ">
+    	<div class="flex flex-col gap-4 md:border-r-2   md:items-start items-end md:bg-white ">
+    		<Navigation />
+ 			<Aside></Aside>
+ 	
+ 		</div>
+		<div class="flex flex-col " >
+<!-- 		<div class="bg-white p-4">
+				<h2 class="text-2xl">Blogg and projects page {page.currentPage}</h2>
+			</div> -->
+			{page.data.map((post, i)=>(
+			<article transition:animate="slide"  class=" flex flex-col bg-white w-full  p-10 px-4 md:px-40 gap-4 border-b-2  ">
+				<h3 class="text-4xl pb-4 text-center underline"> 
+		                {post.data.title}
+		            </h3>
+		        <div class="">
+			    	<img src={post.data.image} alt={post.data.title}/>
+		        </div>
+		        <main>
+		            <p>
+		                {post.data.excerpt}
+		            </p>
+		        </main>
+		        <footer class="text-right">
+		            <a class="bg-sky-200 p-2 rounded-md font-medium hover:bg-sky-100" href={`/posts/${post.slug}`}>Läs mer</a>
+		        </footer>
+		    </article>	
+			)
+		    )}
+		</div>
+    </div>
+</BasicLayout>
+
+

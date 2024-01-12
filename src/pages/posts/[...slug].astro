@@ -1,0 +1,45 @@
+---
+import Aside from "../../components/Aside.astro"
+import BasicLayout from "../../layout/BasicLayout.astro"
+import Hamburger from "../../components/Hamburger.astro"
+import Navigation from "../../components/Navigation.astro"
+import RecentPosts from "../../components/RecentPosts.jsx"
+import type {GetStaticPaths} from "astro";
+import {getCollection, getEntry} from "astro:content";
+export const getStaticPaths = (async()=>{
+const posts = await getCollection("projects");
+return posts.map((post)=>({
+	params: {slug: post.slug}, props: {post}
+}))
+}) satisfies GetStaticPaths;
+
+const {post} = Astro.props;
+const {Content} = await post.render();
+const pathname = new URL(Astro.request.url).pathname;
+---
+
+<BasicLayout>
+	<div class="flex flex-col md:flex-row  min-h-screen">
+		<div   class="flex flex-col gap-4 md:border-r-2  md:items-start items-end md:bg-white ">
+			<Navigation/>
+			<Aside />
+		</div>
+		<div class="">
+			<article class="p-10 px-4 md:px-40  flex flex-col bg-white w-full h-full " transition:name="content" transition:animate="slide">
+				<h3 class="text-4xl text-center pb-8 underline underline-offset-8" > 
+		                {post.data.title}
+		            </h3>
+				<div>
+					<img src={post.data.image} alt="mountain"/>
+						
+				</div>
+				<div class=" py-2">
+
+					<div class="pt-2 text-lg [&>p]:mt-2">
+						<Content/>
+					</div>
+				</div>
+			</article>
+		</div>
+	</div>
+</BasicLayout>
