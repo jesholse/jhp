@@ -5,8 +5,6 @@ import { getEntry, getCollection } from "astro:content";
 const res = await getEntry("pages", "index")
 const projects = await getCollection("projects")
 projects.length = 3;
-const posts = await getCollection("posts")
-posts.length = 5;
 const {Content} = await res.render()
 console.log(Astro.url)
 ---

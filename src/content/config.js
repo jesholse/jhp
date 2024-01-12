@@ -28,9 +28,3 @@ const projectCollection = defineCollection({
     publishDate: z.date().default(new Date()),
   }),
 });
-
-export const collections = {
-  posts: posts,
-  pages: pageCollection,
-  projects: projectCollection,
-};
