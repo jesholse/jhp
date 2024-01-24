@@ -1,6 +1,6 @@
 ---
 import {getCollection} from "astro:content";
-const path = await new URL(Astro.request.url).pathname;
+const path = new URL(Astro.request.url).pathname;
 const posts = await getCollection("projects")
 console.log(path)
 ---

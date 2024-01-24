@@ -1,0 +1,21 @@
+---
+import BasicLayout from "../layout/BasicLayout.astro";
+import Aside from "../components/Aside.astro";
+import Navigation from "../components/Navigation.astro";
+import Skills from "../components/Skills.astro";
+import { slide } from "astro:transitions";
+---
+<BasicLayout>
+    <div class="flex flex-col md:flex-row h-fit min-h-screen">
+        <div class="flex flex-col gap-4 md:border-r-2   md:items-start items-end md:bg-white ">
+    		<Navigation />
+ 			<Aside></Aside>
+ 		</div>
+        <div transition:animate={slide({duration: "0.7s"})} class="bg-white h-fit min-h-screen">
+            <div>
+                <h3 class="p-4 pb-0 text-3xl text-center">Skills</h3>
+            </div>
+          <Skills/>
+        </div>
+    </div>
+</BasicLayout>

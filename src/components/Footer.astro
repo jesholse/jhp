@@ -1,0 +1,26 @@
+---
+import {getCollection} from "astro:content";
+const path = new URL(Astro.request.url).pathname;
+const posts = await getCollection("projects")
+---
+<footer class="bg-sky-900 p-4 text-white ">
+    <div class="flex md:flex-row flex-col w-fit md:mx-auto md:gap-20 gap-4">
+        <nav class=" flex flex-col justify-end pt-0 ">
+            <h3 class="text-xl w-fit md:block">Menu</h3>
+            <ul id="menu" class="flex-col w-fit flex">
+                <li class="w-fit py-1"><a href="/" class={" text-md " + (Astro.url.pathname === "/" ? "border-b-2 border-b-slate-500 " : " hover:text-slate-400")}>Home</a></li>
+                <li class="w-fit py-1"><a href="/posts/1" class={" text-md " + (Astro.url.pathname.split("/")[1] === "posts" ? "border-b-2 border-b-slate-500 " : "")} >Projects</a></li>
+                <li class="w-fit py-1"><a href="/about" class={" text-md " + (Astro.url.pathname.split("/")[1] === "about" ? "border-b-2 border-b-slate-500 " : "")} >About</a></li>
+            </ul>
+        </nav>
+       <aside  class="md:flex  flex-col h-max">
+            <h3 class="text-xl">Latest projects</h3>
+            {posts.map((post)=>(
+                <div  class={"py-1 px-0 h-fit " + (path === `/posts/${post.slug}` ? " text-slate-400" : "") }>
+                    {path === `/posts/${post.slug}` ?  <a  class="text-md">{post.data.title}</a>:  <a href={`/posts/${post.slug}`} class="text-md hover:text-slate-400">{post.data.title}</a>}
+                </div>
+            ))}
+        </aside>
+
+    </div>
+</footer>

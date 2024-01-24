@@ -1,6 +1,8 @@
 ---
 import BasicLayout from "../layout/BasicLayout.astro"
+import Footer from "../components/Footer.astro";
 import Navigation from "../components/Navigation.astro";
+import Skills from "../components/Skills.astro";
 import { getEntry, getCollection } from "astro:content";
 const res = await getEntry("pages", "index")
 const projects = await getCollection("projects")
@@ -13,22 +15,25 @@ console.log(Astro.url)
 <BasicLayout>
 		<div class="flex flex-col">
 			<Navigation/>
-			<div transition:animate="fade"  class="flex lg:flex-row flex-col gap-2 shadow-md bg-white p-4">
-				<img  transition:animate="initial"  transition:name="hero-image" class="max-w-2xl rounded-xl mx-auto" src="/Exploring-cuate.svg" alt="mountain"/>
-				<div class=" p-4 md:px-10 flex flex-col gap-4 my-auto">
-					<h3 class="text-3xl">My way</h3>
-					<div>
-						<Content/>
-					</div>
-					<div>
-						<a href="/posts/1" class="bg-sky-500 text-white rounded-md p-2 hover:bg-sky-300">My projects</a>
-					</div>
-				</div>	
-			</div>
+			<section transition:animate="fade"  class="flex lg:flex-row flex-col gap-2  bg-white p-4">
+				<div class="flex lg:flex-row flex-col gap-2 max-w-5xl mx-auto">
+					<img  transition:animate="initial"  transition:name="hero-image" class="max-w-2xl rounded-xl mx-auto w-full" src="/images/nomad.jpg" alt="mountain"/>
+					<div class=" p-4 md:px-10 flex flex-col gap-4 my-auto">
+						<h3 class="text-3xl">My way</h3>
+						<div>
+							<Content/>
+						</div>
+						<div>
+							<a href="/posts/1" class="bg-sky-500 text-white rounded-md p-2 hover:bg-sky-300">My projects</a>
+						</div>
+					</div>	
+				</div>
+			</section>
 			<div  transition:animate="fade"  class="bg-white p-4 text-center text-3xl">
 				<h2>Portfolio</h2>
 			</div>
-			<div transition:animate="slide" class="flex md:flex-row flex-col pb-4 bg-white">
+			<section transition:animate="slide" class="flex md:flex-row flex-col pb-4 bg-white text-lg">
+				<div class="max-w-5xl mx-auto flex md:flex-row flex-col">
 				{projects.map((post,i )=>(
 					<div class="p-4 basis-1/3 bg-white">
 						<article  class=" flex flex-col w-full p-4 border-2 bg-white">
@@ -41,7 +46,7 @@ console.log(Astro.url)
 							</h3>
 						</header>
 						<main>
-							<span class="bg-red line-clamp-3">
+							<span class="bg-red line-clamp-3 text-left">
 								{post.data.excerpt}
 							</span>
 						</main>
@@ -51,7 +56,16 @@ console.log(Astro.url)
 				</article>	
 				</div>
 				))}
+				</div>
+			</section>
+			<div  transition:animate="fade"  class="bg-white p-4 pt-0 text-center text-3xl">
+				<h2>About</h2>
 			</div>
+			<section class="bg-white text-lg text-left">
+				<div class="max-w-5xl mx-auto">
+					<Skills/>
+				</div>
+			</section>
     	</div>
 </BasicLayout>
 
