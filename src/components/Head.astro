@@ -1,16 +1,17 @@
    ---
    import {ViewTransitions} from "astro:transitions";
+   const {title} = Astro.props
    ---
    
    <head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/Exploring-cuate.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		 <link rel="stylesheet" href="/style.css">
 		 <link href='https://unpkg.com/css.gg@2.0.0/icons/css/user.css' rel='stylesheet'>
 		 <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-		<title>Astro</title>
+		<title>{title}</title>
 		<ViewTransitions></ViewTransitions>
 
 		</script>

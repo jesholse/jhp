@@ -4,8 +4,9 @@ import Aside from "../components/Aside.astro";
 import Navigation from "../components/Navigation.astro";
 import Skills from "../components/Skills.astro";
 import { slide } from "astro:transitions";
+const title = "Jeshol - about"
 ---
-<BasicLayout>
+<BasicLayout title={title}>
     <div class="flex flex-col md:flex-row h-fit min-h-screen">
         <div class="flex flex-col gap-4 md:border-r-2   md:items-start items-end md:bg-white ">
     		<Navigation />
