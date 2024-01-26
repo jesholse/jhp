@@ -1,0 +1,29 @@
+---
+import Aside from "../../components/Aside.astro"
+import Navigation from "../../components/Navigation.astro"
+import BasicLayout from "../../layout/BasicLayout.astro"
+import { slide } from "astro:transitions"
+---
+
+<BasicLayout>
+        <div class="flex flex-col md:flex-row h-fit min-h-screen">
+            <div class="flex flex-col gap-4 md:border-r-2   md:items-start items-end md:bg-white  ">
+                <Navigation />
+                <Aside></Aside>
+            </div>
+            <div transition:animate={slide({duration: "0.7s"})} class="bg-white flex flex-col gap-2 w-full min-h-screen">
+                <div class="lg:mt-48 mt-24">
+                    <h3 class="p-4 pb-0 text-3xl text-center">Contact success</h3>
+                </div>
+                <div class="mx-auto w-48 ">
+                    <img class="max-w-48" src="/images/waiting.svg" alt="contact waiting for answer"/>
+                </div>
+                <div class="max-w-2xl mx-auto">
+                    <p>
+                        Your message has successfully been sent! 
+                    </p>
+                    <p class="text-center mt-4"><a href="/contact" class="underline">Back to contact page</a></p>
+                </div>
+            </div>
+        </div>
+</BasicLayout>
