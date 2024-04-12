@@ -1,6 +1,6 @@
 ---
 import BasicLayout from "../layout/BasicLayout.astro"
-import Footer from "../components/Footer.astro";
+import About from "../components/About.astro";
 import Navigation from "../components/Navigation.astro";
 import Skills from "../components/Skills.astro";
 import { getEntry, getCollection } from "astro:content";
@@ -15,7 +15,7 @@ const title = "Jeshol - index"
 <BasicLayout title={title}>
 		<div class="flex flex-col">
 			<Navigation/>
-			<section transition:animate="fade"  class="flex lg:flex-row flex-col gap-2  bg-white p-4">
+			<section transition:animate="fade"  class="flex lg:flex-row flex-col gap-2  bg-white md:p-8 p-4">
 				<div class="flex lg:flex-row flex-col gap-2 max-w-5xl mx-auto">
 					<img  transition:animate="initial"  transition:name="hero-image" class="max-w-2xl rounded-xl mx-auto w-full" src="/images/nomad.jpg" alt="mountain"/>
 					<div class=" p-4 md:px-10 flex flex-col gap-4 my-auto">
@@ -29,14 +29,14 @@ const title = "Jeshol - index"
 					</div>	
 				</div>
 			</section>
-			<div  transition:animate="fade"  class="bg-white p-4 text-center text-3xl">
+			<div  transition:animate="fade"  class="bg-sky-100 md:pt-8 pt-4 text-center text-3xl">
 				<h2>Portfolio</h2>
 			</div>
-			<section transition:animate="slide" class="flex md:flex-row flex-col pb-4 bg-white text-lg">
-				<div class="max-w-5xl mx-auto flex md:flex-row flex-col">
+			<section transition:animate="slide" class="flex md:flex-row flex-col md:py-4 pb-4 bg-sky-100 text-lg">
+				<div class="mx-auto flex lg:flex-row flex-col md:w-3/4">
 				{projects.map((post,i )=>(
-					<div class="p-4 basis-1/3 bg-white">
-						<article  class=" flex flex-col w-full p-4 border-2 bg-white">
+					<div class="p-4 basis-1/3 ">
+						<article  class=" flex flex-col w-full p-8 bg-white">
 						<div class="flex min-h-52 max-w-52 mx-auto">
 							<img src={post.data.image} alt="mountain" class=""/>
 						</div>
@@ -58,12 +58,17 @@ const title = "Jeshol - index"
 				))}
 				</div>
 			</section>
-			<div  transition:animate="fade"  class="bg-white p-4 pt-0 text-center text-3xl">
+			<div  transition:animate="fade"  class="bg-white pt-8 text-center text-3xl">
 				<h2>About</h2>
-			</div>
+			</div> 
 			<section class="bg-white text-lg text-left">
-				<div class="max-w-5xl mx-auto">
+				<div class=" mx-auto md:w-3/4 md:py-8 p-4">
 					<Skills/>
+				</div>
+			</section>
+			<section class="bg-sky-200">
+				<div class=" mx-auto md:w-3/4  md:p-4">
+					<About/>
 				</div>
 			</section>
     	</div>

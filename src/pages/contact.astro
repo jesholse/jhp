@@ -7,12 +7,12 @@ const title = "Jeshol - Contact"
 ---
 
 <BasicLayout title={title}>
-    <div class="flex flex-col md:flex-row h-fit md:min-h-screen ">
+    <div class="flex flex-col md:flex-row h-fit md:min-h-screen">
          <div class="flex flex-col gap-4 md:border-r-2   md:items-start items-end md:bg-white">
     		<Navigation />
  			<Aside></Aside>
  		</div>
-        <section transition:animate={slide({duration: "0.7s"})} class="bg-white flex flex-col gap-2 w-full">
+        <section transition:animate={slide({duration: "0.7s"})} class="bg-white flex flex-col gap-2 w-full py-4">
             <div>
                 <h3 class="p-4 pb-0 text-3xl text-center">Contact</h3>
             </div>
@@ -23,7 +23,7 @@ const title = "Jeshol - Contact"
             </div>
             <div class="h-fit md:min-h-screen">
                 <form action="/contact/success" name="contact" class="md:p-10 p-4 flex flex-col gap-4 max-w-2xl mx-auto w-full " netlify>
-                    <input placeholder="email" name="Email" type="email" class="border-2 p-2" / required>
+                    <input placeholder="Email" name="Email" type="email" class="border-2 p-2" / required>
                     <textarea placeholder="Message" name="Message" class="border-2 p-2 h-44" required></textarea>
                     <button type="submit" class="p-2 px-4 border-2 border-orange-500 w-fit ">Submit</button>
                 </form>
