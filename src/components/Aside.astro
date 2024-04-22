@@ -6,7 +6,7 @@ console.log(path)
 ---
 
 <aside  class="md:flex hidden flex-col pr-4 h-max gap-1 pl-2">
-	<h3 class="md:px-2 text-xl">Latest projects</h3>
+	<h3 class="md:px-2 text-xl">Senase projekten</h3>
 	{posts.map((post)=>(
 		<div  class={"py-1 md:px-2 px-0 h-fit  min-w-56 " + (path === `/posts/${post.slug}` ? " text-slate-400" : "") }>
 			 {path === `/posts/${post.slug}` ?  <a  class="text-md">{post.data.title}</a>:  <a href={`/posts/${post.slug}`} class="text-md hover:text-slate-400">{post.data.title}</a>}

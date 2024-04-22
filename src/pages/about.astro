@@ -5,21 +5,25 @@ import About from "../components/About.astro";
 import Navigation from "../components/Navigation.astro";
 import Skills from "../components/Skills.astro";
 import { slide } from "astro:transitions";
-const title = "Jeshol - about"
+const title = "Jeshol - om"
 ---
 <BasicLayout title={title}>
     <div class="flex flex-col md:flex-row h-fit min-h-screen">
-        <div class="flex flex-col gap-4 md:border-r-2   md:items-start items-end md:bg-white ">
+        <div class="flex flex-col gap-4 md:border-r-2   md:items-start items-end bg-white">
     		<Navigation />
  			<Aside></Aside>
  		</div>
-        <div transition:animate={slide({duration: "0.7s"})} class="bg-white h-fit min-h-screen">
+        <div transition:animate={slide({duration: "0.7s"})} class="bg-white h-fit min-h-screen w-full">
             <div>
-                <h3 class="p-4 pb-0 text-3xl text-center">Skills</h3>
+                <h3 class="p-4 pb-0 text-3xl text-center">Färdigheter</h3>
             </div>
-            <div class="md:p-8">
-                <Skills/>
-                <About/>
+	    <div class="md:p-8 w-full flex items-center flex-col gap-4">
+		    <div class="md:p-0 p-4 max-w-5xl">
+			    <Skills/>
+		    </div>
+		    <div class="md:p-0 p-4 max-w-5xl">
+			    <About/>
+		    </div>
             </div>
         </div>
     </div>

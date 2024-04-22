@@ -2,54 +2,54 @@
 const skills = [
     {
         "name": "React",
-        "desc": "React is a front-end JavaScript library",
+        "desc": "React är ett javascript-bibliotek för att skapa front-end",
         "icon": "vscode-icons:file-type-reactjs"
     },
     {
         "name": "Astro",
-        "desc": "Astro is web frameowrk for content-driven websites",
+        "desc": "Astro är ett ramverk för att skap innhållsfokuserade hemsidor",
         "icon": "vscode-icons:file-type-light-astro"
     },
         {
         "name": "JavaScript",
-        "desc": "JavaScript is used to create interactive sites",
+        "desc": "JavaScript används till att skapa interaktiva hemsidor",
         "icon": "logos:javascript"
     },
         {
-        "name": "Tailwind CSS",
-        "desc": "Tailwind is used to fastly create user interface",
+        "name": "Tailwind",
+        "desc": "Tailwind används för att skapa UI (user interface)",
         "icon": "devicon:tailwindcss"
     },
         {
         "name": "CSS",
-        "desc": "Essential knowledge to create user interface",
+        "desc": "CSS är byggsterna i att skapa UI",
         "icon": "devicon:css3"
     },
         {
         "name": "HTML5",
-        "desc": "The basic building blocks for every site",
+        "desc": "HTML5 är byggstenarna för hemsidans struktur",
         "icon": "devicon:html5"
     },
         {
         "name": "WordPress",
-        "desc": "A popular content management systen",
+        "desc": "WordPress används för att skapa innehåll på hemsidor",
         "icon": "skill-icons:wordpress"
     },
         {
         "name": "Netlify",
-        "desc": "Easy solution for hosting apps and websitess",
+        "desc": "Netlify är en snabb och enkel tjänst för web hosting",
         "icon": "vscode-icons:file-type-netlify"
     }
     ]
 ---
 
-<div class="flex md:flex-row flex-col flex-wrap h-fit bg-white">
+<div class="flex md:flex-row flex-wrap h-fit  mx-auto w-fit md:gap-2">
     {skills.map((skill)=>(
-          <div class=" lg:w-1/4 md:w-2/4 p-4">
-            <div class="bg-sky-50 p-4 flex flex-col items-center justify-center gap-2 min-h-56">
+    <div class="md:w-40 w-1/2 p-2">
+		  <div class="text-center p-4 flex flex-col items-center justify-center gap-2 shadow-lg   text-slate-700">
                 <iconify-icon icon={skill.icon} class="text-6xl"></iconify-icon>
                 <h1 class="text-2xl">{skill.name}</h1>
-                <span class="text-sm">{skill.desc}</span>
+		<!---<span class="text-sm">{skill.desc}</span>--->
             </div>    
         </div>
     ))

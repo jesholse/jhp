@@ -7,67 +7,77 @@ import { getEntry, getCollection } from "astro:content";
 const res = await getEntry("pages", "index")
 const projects = await getCollection("projects")
 projects.length = 3;
-const {Content} = await res.render()
-const title = "Jeshol - index"
+projects.sort((a,b) => a.publishDate - b.publishDate).reverse();
+const {Content} = await res.render();
+const title = "Jeshol - index";
 ---
 
 
 <BasicLayout title={title}>
-		<div class="flex flex-col">
+		<div class="flex flex-col bg-white">
 			<Navigation/>
-			<section transition:animate="fade"  class="flex lg:flex-row flex-col gap-2  bg-white md:p-8 p-4">
-				<div class="flex lg:flex-row flex-col gap-2 max-w-5xl mx-auto">
+			<section transition:animate="fade"  class="flex lg:flex-row flex-col gap-2  bg-white md:p-8 p-4 ">
+				<div class="flex lg:flex-row flex-col gap-2 max-w-5xl mx-auto py-16">
 					<img  transition:animate="initial"  transition:name="hero-image" class="max-w-2xl rounded-xl mx-auto w-full" src="/images/nomad.jpg" alt="mountain"/>
 					<div class=" p-4 md:px-10 flex flex-col gap-4 my-auto">
-						<h3 class="text-3xl">My way</h3>
+						<h3 class="text-3xl">Mitt portfolio</h3>
 						<div>
 							<Content/>
 						</div>
-						<div>
-							<a href="/posts/1" class="bg-sky-500 text-white rounded-md p-2 hover:bg-sky-300">My projects</a>
+						<div class="flex flex-col">
+							<a href="/posts/1" class="hover:text-slate-500 underline underline-offset-4">Mina projekt</a>
+							<a href="/about" class="py-1 hover:text-slate-500 underline underline-offset-4">Om sidan och mig</a>
+							<a href="/contact" class="py-1 hover:text-slate-500 underline underline-offset-4">Kontakt</a>
 						</div>
 					</div>	
 				</div>
 			</section>
-			<div  transition:animate="fade"  class="bg-sky-100 md:pt-8 pt-4 text-center text-3xl">
+			<div  transition:animate="fade"  class="border-t-2 pt-6 text-center text-3xl hidden">
 				<h2>Portfolio</h2>
 			</div>
-			<section transition:animate="slide" class="flex md:flex-row flex-col md:py-4 pb-4 bg-sky-100 text-lg">
+			<section transition:animate="fade" class="py-16  text-lg bg-sky-200 ">
+				<!---<div class="text-center text-3xl">
+					<h2>Project</h2>
+				</div>--->
 				<div class="mx-auto flex lg:flex-row flex-col md:w-3/4">
 				{projects.map((post,i )=>(
 					<div class="p-4 basis-1/3 ">
-						<article  class=" flex flex-col w-full p-8 bg-white">
-						<div class="flex min-h-52 max-w-52 mx-auto">
-							<img src={post.data.image} alt="mountain" class=""/>
+						<article  class=" flex flex-col w-full p-8 bg-white shadow-lg">
+						<div class="flex w-full  min-h-52 max-h-52  mx-auto">
+							<img class="object-contain" src={post.data.image} alt="mountain" class=""/>
 						</div>
-						<header transition:animate="initial" transition:name={post.data.title} class="py-2">
-							<h3  class="text-xl"> 
+						<header class="py-2">
+							<h3 transition:name={`${post.data.title}-title`}  transition:animate="initial" class="text-xl"> 
 								{post.data.title}
 							</h3>
 						</header>
 						<main>
-							<span class="bg-red line-clamp-3 text-left">
+							<span class="line-clamp-3 text-left">
 								{post.data.excerpt}
 							</span>
 						</main>
 						<footer class="pt-4 text-right">
-							<a class="bg-sky-200 p-2 rounded-md hover:bg-sky-100" href={`/posts/${post.slug}`}>Read more</a>
+							<a class="bg-sky-200 p-2 rounded-md hover:bg-sky-100" href={`/posts/${post.slug}`}>Läs mer</a>
 						</footer>
 				</article>	
 				</div>
 				))}
 				</div>
 			</section>
-			<div  transition:animate="fade"  class="bg-white pt-8 text-center text-3xl">
-				<h2>About</h2>
-			</div> 
-			<section class="bg-white text-lg text-left">
-				<div class=" mx-auto md:w-3/4 md:py-8 p-4">
+			<section class="text-lg text-left py-16">
+				<!---<div  class="text-center text-3xl">
+				<h2>Färdigheter</h2>
+				</div>--->
+				<div class=" mx-auto md:w-3/4  p-4">
 					<Skills/>
 				</div>
 			</section>
-			<section class="bg-sky-200">
-				<div class=" mx-auto md:w-3/4  md:p-4">
+			<section class="bg-sky-50 py-16">
+				<!---<div class="text-center text-3xl">
+					<h2>Om sidan</h2>
+				</div>--->
+
+				<div class=" mx-auto md:w-3/4">
 					<About/>
 				</div>
 			</section>

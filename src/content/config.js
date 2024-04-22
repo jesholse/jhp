@@ -25,6 +25,6 @@ const projectCollection = defineCollection({
     author: z.string().default("Jeshol"),
     image: z.string(),
     excerpt: z.string(),
-    publishDate: z.date().default(new Date()),
+    publishDate: z.string(),
   }),
 });

@@ -2,4 +2,4 @@
 title: Välkommen hit
 ---
 
-Hello, this is my personal page for things that I'm creating or that I'm up to.
+Hej, detta är min personliga sida för diverse projekt eller annat jag är upp till.

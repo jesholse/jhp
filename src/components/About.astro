@@ -1,37 +1,32 @@
    <section class=" mx-auto flex flex-col gap-4 p-4 ">
-        <div class="flex md:flex-row flex-col gap-4 md:p-4">
-            <div>
-                <div transition:animate="fade"  class=" p-4 text-center text-3xl">
-                    <h3 class="text-2xl">Creating the website</h3>
-                </div>
-                <p>For me it's about creating fast and simple websites. Astro.build is a 
-    static site generator which can fetch data, integrate components from 
-    React and utilize Tailwind with ease. This stack makes it easy to 
-    produce everything from a portfolio to a blog.</p>
-            </div>
-            <div>
-                <div transition:animate="fade"  class="p-4 text-center text-3xl">
-                    <h3  class="text-2xl">Hosting the website</h3>
-                </div>
-                <p>Netlify is an excellent chose for hosting websites. 
-    The Netlify platform is granted access to the gitHub repository. Each 
-    pusch to the respository will trigger a redeployment on Netlify. If 
-    something is amiss or causes an error, Netlify will revert back to the 
-    previous working version.</p>
+        <div class="flex lg:flex-row flex-col lg:gap-16 gap-4 ">
+            <div class=" md:pt-0  lg:w-1/2">
+                <div transition:animate="fade"  class=" pb-4 text-center text-3xl">
+                    <h3 class="text-2xl">Skapande av hemsidan</h3>
+		</div>
+		<p>
+		För mig handlar det om att skapa snabba och simpla hemsidor. Astro.build använder jag tillsammans med andra verktyg som  exempelvis React, Tailwind och WordPress. Tillsammans utgör den stabil grund för allting från ett portfolio till en blogg och däremellan.
+		</p>
+	    </div>
+            <div class=" md:pt-0  lg:w-1/2">
+                <div transition:animate="fade"  class="pb-4 text-center text-3xl">
+                    <h3  class="text-2xl">Webbhotell för hemsidan</h3>
+		</div>
+		<p>
+		Netlify är ett utmärkt  webbhotell. Alla ändringar på hemsidan uppladdas först på gitHub. Netlify har tillgång till vårt respository där hemsidan ligger på. Netlify känner direkt av när en förändring sker och uppdaterar hemsidan automatiskt. Vid eventuella fel återgår Netlify till den senaste fungerande verisonen.
+		</p>
             </div>
         </div>
-         <div class="flex md:flex-row flex-col gap-4 md:p-4 pb-4">
-            <div class=" md:pt-0 pt-4 md:w-1/2">
-                <div transition:animate="fade"  class="p-4 pt-0 text-center text-3xl">
-                    <h3  class="text-2xl">Content management </h3>
-                </div>
-                <p>The stack can use Markdown files. These files are 
-    located in a folder within the project. This is a good choice for a site 
-    that doesn't need to generate new content. Another option is to use an 
-    external API. With this option we can use any content management system 
-    with an API, such as WordPress. It's a ideal choice for a blog.</p>
+         <div class="flex lg:flex-row flex-col pt-4 lg:gap-16 gap-4  pb-4">
+            <div class=" md:pt-0 lg:w-1/2">
+                <div transition:animate="fade"  class="pb-4 pt-0 text-center text-3xl">
+                    <h3  class="text-2xl">Innehåll på sidan </h3>
+		</div>
+		<p>
+		Det finns flera sätt att hantera innehåll på sidan. Antingen genom markdown-filer, genom ett content management system som WordPress eller för enkla data via ett kalkylblad. Varje sätt har sina egna områden och krav på kunskap. Markdown-filer kräver högst kunskap och kalkylblad kräver minst kunskap.
+		</p>
             </div>
-            <div class="md:w-1/2 md:my-auto">
+            <div class="lg:w-1/2 md:my-auto">
                 <img class=" rounded-xl mx-auto w-3/4" src="/images/computer.svg" alt="computer"/>  
             </div>
         </div>

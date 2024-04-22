@@ -7,46 +7,53 @@ import type {GetStaticPaths} from "astro";
 import {getCollection, getEntry} from "astro:content";
 export const getStaticPaths = (async({paginate})=>{
 const posts = await getCollection("projects")
-return paginate(posts, {pageSize: 5})
+posts.sort((a,b) => a.publishDate - b.publishDate).reverse() 
+return paginate(posts, {pageSize: 2})
 }) satisfies GetStaticPaths;
 const {page} = Astro.props;
 import { slide } from "astro:transitions";
-const title = `Jeshol - page ${page.currentPage}`
+const title = `Jeshol -sida ${page.currentPage}`
 ---
 
 <BasicLayout title={title}>
-
     <div class="flex flex-col md:flex-row ">
-    	<div class="flex flex-col gap-4 md:border-r-2   md:items-start items-end md:bg-white ">
+    	<div class="flex flex-col gap-4 md:border-r-2   md:items-start items-end  bg-white">
     		<Navigation />
  			<Aside></Aside>
  	
  		</div>
-		<div class="flex flex-col " >
+		<div class="flex flex-col w-full flex-1 min-h-[calc(100vh-12rem)] " >
 <!-- 		<div class="bg-white p-4">
 				<h2 class="text-2xl">Blogg and projects page {page.currentPage}</h2>
 			</div> -->
 			{page.data.map((post, i)=>(
-			<article transition:animate={slide({duration: "0.7s"})}  class=" flex flex-col bg-white w-full  p-10 px-4 md:px-40 gap-4 border-b-2  ">
-				<h3 class="text-4xl pb-4 text-center underline"> 
+			<article transition:name={post.data.title} transition:animate={slide({duration: "0.7s"})}  class="md:h-[calc(100vh-12rem)] flex flex-col bg-white w-full  p-10 px-4 lg:px-40 gap-4 border-b-2  ">
+				<h3 class="text-4xl pb-4 text-center"> 
 		                {post.data.title}
 		            </h3>
-		        <div class="">
-			    	<img src={post.data.image} alt={post.data.title}/>
+			    <div class="mx-auto lg:w-1/2 w-full">
+			    	<img class="md:h-auto h-full" src={post.data.image} alt={post.data.title}/>
 		        </div>
-		        <main>
+		        <main class="max-w-4xl text-md mx-auto md:pt-4">
 		            <p>
-		                {post.data.excerpt}
+			    {post.data.excerpt}
 		            </p>
 		        </main>
-		        <footer class="text-right">
+		        <footer class="text-right max-w-4xl  max-w-4xl ">
 		            <a class="bg-sky-200 p-2 rounded-md font-medium hover:bg-sky-100" href={`/posts/${post.slug}`}>Läs mer</a>
 		        </footer>
 		    </article>	
 			)
-		    )}
+			)}
+			<div class="bg-white p-4">
+				<div class="max-w-3xl mx-auto flex flex-row justify-between">
+					{page.url.prev ? <a  class="bg-sky-600 text-white p-2 rounded-md hover:bg-sky-500" href={page.url.prev}>Previous</a> : null}
+					{page.url.next ? <a class="bg-sky-600 text-white p-2 rounded-md hover:bg-sky-500" href={page.url.next}>Next</a> : null}
+				</div>	
+			</div>
 		</div>
     </div>
+    
 </BasicLayout>
 
 
