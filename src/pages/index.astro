@@ -21,11 +21,11 @@ const title = "Jeshol - index";
 					<img  transition:animate="initial"  transition:name="hero-image" class="max-w-2xl rounded-xl mx-auto w-full" src="/images/nomad.jpg" alt="mountain"/>
 					<div class=" p-4 md:px-10 flex flex-col gap-4 my-auto">
 						<h3 class="text-3xl">Mitt portfolio</h3>
-						<div>
+						<div class="p-4 bg-sky-100">
 							<Content/>
 						</div>
 						<div class="flex flex-col">
-							<a href="/posts/1" class="hover:text-slate-500 underline underline-offset-4">Mina projekt</a>
+							<a href="/posts/1" class="hover:text-slate-500 underline underline-offset-7">Mina projekt</a>
 							<a href="/about" class="py-1 hover:text-slate-500 underline underline-offset-4">Om sidan och mig</a>
 							<a href="/contact" class="py-1 hover:text-slate-500 underline underline-offset-4">Kontakt</a>
 						</div>
@@ -35,7 +35,7 @@ const title = "Jeshol - index";
 			<div  transition:animate="fade"  class="border-t-2 pt-6 text-center text-3xl hidden">
 				<h2>Portfolio</h2>
 			</div>
-			<section transition:animate="fade" class="py-16  text-lg bg-sky-200 ">
+			<section transition:animate="fade" class="lg:py-16 py-4  text-lg bg-sky-200 ">
 				<!---<div class="text-center text-3xl">
 					<h2>Project</h2>
 				</div>--->
@@ -47,7 +47,7 @@ const title = "Jeshol - index";
 							<img class="object-contain" src={post.data.image} alt="mountain" class=""/>
 						</div>
 						<header class="py-2">
-							<h3 transition:name={`${post.data.title}-title`}  transition:animate="initial" class="text-xl"> 
+							<h3   transition:animate="initial" class="text-xl"> 
 								{post.data.title}
 							</h3>
 						</header>
@@ -64,7 +64,7 @@ const title = "Jeshol - index";
 				))}
 				</div>
 			</section>
-			<section class="text-lg text-left py-16">
+			<section class="text-lg text-left lg:py-16 py-4">
 				<!---<div  class="text-center text-3xl">
 				<h2>Färdigheter</h2>
 				</div>--->
@@ -72,7 +72,7 @@ const title = "Jeshol - index";
 					<Skills/>
 				</div>
 			</section>
-			<section class="bg-sky-50 py-16">
+			<section class="bg-sky-50 lg:py-16 py-4">
 				<!---<div class="text-center text-3xl">
 					<h2>Om sidan</h2>
 				</div>--->

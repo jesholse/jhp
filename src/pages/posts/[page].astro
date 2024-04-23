@@ -27,7 +27,7 @@ const title = `Jeshol -sida ${page.currentPage}`
 				<h2 class="text-2xl">Blogg and projects page {page.currentPage}</h2>
 			</div> -->
 			{page.data.map((post, i)=>(
-			<article transition:name={post.data.title} transition:animate={slide({duration: "0.7s"})}  class="md:h-[calc(100vh-12rem)] flex flex-col bg-white w-full  p-10 px-4 lg:px-40 gap-4 border-b-2  ">
+			<article  transition:animate={slide({duration: "0.7s"})}  class="md:h-[calc(100vh-12rem)] flex flex-col bg-white w-full  p-10 px-4 lg:px-40 gap-4 border-b-2  ">
 				<h3 class="text-4xl pb-4 text-center"> 
 		                {post.data.title}
 		            </h3>
